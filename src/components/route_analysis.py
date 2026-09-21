@@ -36,7 +36,7 @@ class RouteAnalysis:
 
     # Ship Mode Summary
 
-    def ship_mode_summary(self):
+    def ship_mode_summary(self, df):
         try:
             return (
                 self.df.groupby("Ship Mode")
@@ -54,7 +54,7 @@ class RouteAnalysis:
 
     # Region Summary
 
-    def region_summary(self):
+    def region_summary(self, df):
         try:
             return (
                 self.df.groupby("Region")
@@ -73,7 +73,7 @@ class RouteAnalysis:
 
     # State Summary
 
-    def state_summary(self):
+    def state_summary(self, df):
         try:
             return (
                 self.df.groupby("State/Province")
@@ -91,7 +91,7 @@ class RouteAnalysis:
 
     # City Summary
 
-    def city_summary(self):
+    def city_summary(self,df):
         try:
             city = (
                 self.df.groupby("City")
@@ -114,9 +114,9 @@ class RouteAnalysis:
 
     # Best Routes
 
-    def best_routes(self, min_orders=10):
+    def best_routes(self, df, min_orders=10):
         try:
-            city = self.city_summary()
+            city = self.city_summary(df)
 
             city = city[
                 city["Total_Orders"] >= min_orders
@@ -129,9 +129,9 @@ class RouteAnalysis:
 
     # Worst Routes
 
-    def worst_routes(self, min_orders=10):
+    def worst_routes(self, df, min_orders=10):
         try:
-            city = self.city_summary()
+            city = self.city_summary(df)
 
             city = city[
                 city["Total_Orders"] >= min_orders
