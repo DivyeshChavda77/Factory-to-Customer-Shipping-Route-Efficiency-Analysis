@@ -92,7 +92,7 @@ Streamlit Dashboard
 |---|---:|
 | Total Sales | $141,783.63 |
 | Gross Profit | $93,442.80 |
-| Total Cost | $48,340.83 |
+| Total Order | 8549 |
 | Units Sold | 38,654 |
 | Avg. Shipping Days | 1,344.24 |
 | Avg. Profit Margin | 66.51% |
