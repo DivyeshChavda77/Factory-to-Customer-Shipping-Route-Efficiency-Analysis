@@ -47,14 +47,14 @@ def data_explorer(df):
     # Search + Download
     # ======================
 
-    left, right = st.columns([5,1])
+    left, right = st.columns([5,1], vertical_alignment="center")
 
     with left:
         search = st.text_input(
             "Search",
             placeholder="🔍 Search product, city, state or order ID...",
             key="data_explorer_search",
-            max_chars=100
+            label_visibility="collapsed"
         )
 
         if search:
@@ -82,7 +82,6 @@ def data_explorer(df):
                 filtered = filtered[search_mask]
 
     with right:
-        st.write("")
         csv = filtered.to_csv(index=False)
 
         st.download_button(

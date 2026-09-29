@@ -564,10 +564,10 @@ div[data-baseweb="tab-highlight"]{
     font-size:16px;
 }
 
-.stTextInput input:focus{
+/* .stTextInput input:focus{
     border:2px solid #3B82F6 !important;
     box-shadow:0 0 0 3px rgba(59,130,246,.15) !important;
-}
+} */
 
 
 /* ==========================================================
@@ -720,3 +720,5 @@ hr{
 .stSpinner > div{
     border-top-color:#3B82F6 !important;
 }
+
+
