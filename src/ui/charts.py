@@ -1,7 +1,7 @@
 import plotly.express as px
 import pandas as pd
 
-def chart_layout(fig):
+def chart_layout(fig, x_title="", y_title=""):
     fig.update_layout(
         template="plotly_dark",
 
@@ -36,7 +36,7 @@ def chart_layout(fig):
         ),
 
         xaxis=dict(
-            title=None,
+            title=x_title,
             showgrid=False,
             zeroline=False,
             showline=True,
@@ -49,7 +49,7 @@ def chart_layout(fig):
         ),
 
         yaxis=dict(
-            title=None,
+            title=y_title,
             showgrid=True,
             gridcolor="#334155",
             gridwidth=1,
@@ -85,7 +85,11 @@ def sales_by_region(df):
         coloraxis_showscale=False
     )
 
-    return chart_layout(fig)
+    return chart_layout(
+        fig,
+         x_title="Region",
+        y_title="Sales ($)"
+        )
 
 # Profit by Region
 def profit_by_region(df):
@@ -108,7 +112,11 @@ def profit_by_region(df):
         coloraxis_showscale=False
     )
 
-    return chart_layout(fig)
+    return chart_layout(
+        fig,
+        x_title="Region",
+        y_title="Gross Profit ($)"
+    )
 
 # Sales vs Profit
 def sales_vs_profit(df):
@@ -144,7 +152,11 @@ def sales_vs_profit(df):
         coloraxis_showscale=False
     )      
 
-    return chart_layout(fig)
+    return chart_layout(
+        fig,
+        x_title="Sales ($)",
+        y_title="Gross Profit ($)"
+    )
 
 # Shiping by Shipmode
 def shipping_by_shipmode(df):
@@ -166,7 +178,11 @@ def shipping_by_shipmode(df):
      coloraxis_showscale=False
     )
 
-    return chart_layout(fig)
+    return chart_layout(
+        fig,
+        x_title="Ship Mode",
+        y_title="Average Shipping Days"
+    )
 
 # -----------------Route Analysis Tab --------------
 # Fastest and slowest city
@@ -202,7 +218,10 @@ def fastest_cities(df):
         yaxis=dict(categoryorder="total ascending")
     )
 
-    return chart_layout(fig)
+    return chart_layout(
+        fig,
+        x_title="Average Shipping Days",    
+        y_title="City")
 
 def slowest_cities(df):
 
@@ -231,7 +250,11 @@ def slowest_cities(df):
         coloraxis_showscale=False
     )
 
-    return chart_layout(fig)
+    return chart_layout(
+        fig,
+        x_title="Average Shipping Days",
+        y_title="City"
+        )
 
 # Shipping by State
 def shipping_by_state(df):
@@ -257,7 +280,11 @@ def shipping_by_state(df):
         yaxis=dict(categoryorder="total ascending")
     )
 
-    return chart_layout(fig)
+    return chart_layout(
+        fig,
+        x_title="Average Shipping Days",
+        y_title="State/Province"
+    )
 
 # Shipping by Region
 def shipping_by_region(df):
@@ -280,7 +307,11 @@ def shipping_by_region(df):
         coloraxis_showscale=False
     )
 
-    return chart_layout(fig)
+    return chart_layout(
+        fig,
+        x_title="Region",
+        y_title="Average Shipping Days"
+    )
 
 # --------------Salse Tab Charts----------------
 
@@ -325,7 +356,11 @@ def monthly_sales(df):
         coloraxis_showscale=False
     )
 
-    return chart_layout(fig)
+    return chart_layout(
+        fig,
+        x_title="Order Month",
+        y_title="Sales"
+    )
 
 # Sales by shipMode
 def sales_by_ship_mode(df):
@@ -346,7 +381,11 @@ def sales_by_ship_mode(df):
         coloraxis_showscale=False
     )
 
-    return chart_layout(fig)
+    return chart_layout(
+        fig,
+        x_title="Ship Mode",
+        y_title="Sales ($)"
+    )
 
 # Sales by Division
 def sales_by_division(df):
@@ -373,7 +412,11 @@ def sales_by_division(df):
         coloraxis_showscale=False
     )
 
-    return chart_layout(fig)
+    return chart_layout(
+        fig,
+        x_title="Division",
+        y_title="Sales ($)"
+    )
 
 # Sales Distribution
 def sales_distribution(df):
@@ -388,7 +431,11 @@ def sales_distribution(df):
         title=None,
         coloraxis_showscale=False
     )
-    return chart_layout(fig)
+    return chart_layout(
+        fig,
+        x_title="Sales ($)",
+        y_title="Number of Orders"
+    )
 
 # -------------Product Analysis Tab Charts-------------
 
@@ -415,32 +462,11 @@ def profit_by_product(df):
         yaxis=dict(categoryorder="total ascending")
     )
 
-    return chart_layout(fig)
-
-# Unit Sold
-# def units_by_product(df):
-#     product = (
-#         df.groupby("Product Name", as_index=False)
-#         .agg({"Units":"sum"})
-#         .sort_values("Units", ascending=False)
-#         .head(10)
-#     )
-#     fig = px.bar(
-#         product,
-#         x="Units",
-#         y="Product Name",
-#         orientation="h",
-#         color="Units",
-#         color_continuous_scale="Purples",
-#         text_auto=True
-#     )
-#     fig.update_layout(
-#         title=None,
-#         coloraxis_showscale=False,
-#         yaxis=dict(categoryorder="total ascending")
-#     )
-
-#     return chart_layout(fig)
+    return chart_layout(
+        fig,
+        x_title="Gross Profit ($)",
+        y_title="Product Name"
+    )
 
 # Top Products
 def top_products(df):
@@ -466,33 +492,11 @@ def top_products(df):
         yaxis=dict(categoryorder="total ascending")
     )
 
-    return chart_layout(fig)
-
-# Bottom Products
-# def bottom_products(df):
-
-#     product = (
-#         df.groupby("Product Name", as_index=False)
-#         .agg({"Sales":"sum"})
-#         .sort_values("Sales")
-#         .head(10)
-#     )
-#     fig = px.bar(
-#         product,
-#         x="Sales",
-#         y="Product Name",
-#         orientation="h",
-#         color="Sales",
-#         color_continuous_scale="Reds",
-#         text_auto=".2s"
-#     )
-#     fig.update_layout(
-#         title=None,
-#         coloraxis_showscale=False,
-#         yaxis=dict(categoryorder="total ascending")
-#     )
-
-#     return chart_layout(fig)
+    return chart_layout(
+        fig,
+        x_title="Sales ($)",
+        y_title="Product Name"
+    )
 
 # Sales vs Profit Buble Chart
 def bubble_sales_profit(df):
@@ -510,5 +514,9 @@ def bubble_sales_profit(df):
         coloraxis_showscale=False
     )
 
-    return chart_layout(fig)
+    return chart_layout(
+        fig,
+        x_title="Sales ($)",
+        y_title="Gross Profit ($)"
+    )
 
